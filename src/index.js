@@ -26,6 +26,7 @@ const container = document.querySelector(".container")
 function createDisplay(picture, state, temperature, location) {
     clearContainer()
     const wrapper = document.createElement("div")
+    wrapper.className="api-wrapper"
     container.append(wrapper)
 
     const img = document.createElement("img")
@@ -34,10 +35,11 @@ function createDisplay(picture, state, temperature, location) {
 
     const status = document.createElement("h1")
     status.innerText = state
+    status.className="state"
     wrapper.append(status)
 
     const celsius = document.createElement("h1")
-    celsius.innerText = temperature
+    celsius.innerText = `${temperature} °C`
     wrapper.append(celsius)
 
     const city = document.createElement("h1")

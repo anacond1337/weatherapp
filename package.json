@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "sass": "^1.54.8"
+  },
+
+  "scripts": {
+    "style": "npx sass src/index.scss src/index.css --watch"
   }
 }
