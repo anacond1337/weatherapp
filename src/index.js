@@ -1,16 +1,12 @@
-function callApi(city) {
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=eff735341103360529abbe301d4dd76c&units=metric`)
-    .then(response => {
-        if (!response.ok) {
-            createError()
-        }
-        return response.json()
-    })
-    .then(data =>{
-        console.log(data)
-        createDisplay(data.weather[0].icon, data.weather[0].description, data.main.temp, data.name)
-    })
-    
+async function callApi(city) {
+  try {
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=eff735341103360529abbe301d4dd76c&units=metric`);
+    if (!res.ok) throw Error("Something went wrong");
+    const data = await res.json();
+    createDisplay(data.weather[0].icon, data.weather[0].description, data.main.temp, data.name)
+  } catch (error) {
+    createError()
+  }
 }
 
 const input = document.querySelector(".mainforminput")
